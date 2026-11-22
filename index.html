@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Der Titel erscheint im Browser-Tab -->
+  <title>Meine erste Website</title>
+
+  <style>
+    /* ===== Farben: hier kannst du alles zentral ändern ===== */
+    :root {
+      --hintergrund: #0e1117;
+      --karte: #161b22;
+      --rand: #262c36;
+      --text: #e6edf3;
+      --text-leise: #8b949e;
+      --akzent: #7c5cff;      /* Lila – probier z. B. #22c55e für Grün */
+      --akzent-2: #00d4ff;    /* Türkis */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--hintergrund);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--akzent-2); }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== Navigation oben ===== */
+    nav {
+      position: sticky; top: 0;
+      background: rgba(14, 17, 23, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rand);
+      z-index: 10;
+    }
+    nav .container {
+      display: flex; justify-content: space-between; align-items: center;
+      height: 60px;
+    }
+    .logo { font-weight: 700; font-size: 1.1rem; }
+    .logo span { color: var(--akzent); }
+    nav ul { display: flex; gap: 24px; list-style: none; }
+    nav a { color: var(--text-leise); text-decoration: none; font-size: 0.95rem; }
+    nav a:hover { color: var(--text); }
+
+    /* ===== Großer Bereich ganz oben ===== */
+    .hero { padding: 120px 0 90px; text-align: center; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .verlauf {
+      background: linear-gradient(90deg, var(--akzent), var(--akzent-2));
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+    }
+    .hero p { color: var(--text-leise); font-size: 1.15rem; max-width: 560px; margin: 0 auto 36px; }
+
+    .knopf {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 999px;
+      background: var(--akzent);
+      color: white; text-decoration: none; font-weight: 600;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .knopf:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124, 92, 255, 0.4); }
+
+    /* ===== Abschnitte ===== */
+    section { padding: 70px 0; }
+    h2 { font-size: 1.8rem; margin-bottom: 28px; }
+
+    .karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .karte {
+      background: var(--karte);
+      border: 1px solid var(--rand);
+      border-radius: 14px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .karte:hover { border-color: var(--akzent); }
+    .karte .icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .karte h3 { margin-bottom: 8px; }
+    .karte p { color: var(--text-leise); font-size: 0.95rem; }
+
+    /* Kleiner interaktiver Teil */
+    .zaehler {
+      background: var(--karte); border: 1px solid var(--rand); border-radius: 14px;
+      padding: 32px; text-align: center;
+    }
+    .zahl { font-size: 3rem; font-weight: 700; color: var(--akzent-2); }
+    .zaehler button {
+      margin-top: 16px; padding: 10px 24px; border-radius: 999px;
+      border: 1px solid var(--akzent); background: transparent; color: var(--text);
+      font-size: 1rem; cursor: pointer;
+    }
+    .zaehler button:hover { background: var(--akzent); }
+
+    footer {
+      border-top: 1px solid var(--rand);
+      padding: 30px 0; text-align: center;
+      color: var(--text-leise); font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="logo">Mein<span>Projekt</span></div>
+      <ul>
+        <li><a href="#ueber">Über</a></li>
+        <li><a href="#ausprobieren">Ausprobieren</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== Hero: Ändere hier deine Überschrift ===== -->
+  <header class="hero">
+    <div class="container">
+      <h1>Hallo Welt, das ist<br><span class="verlauf">meine erste Website</span></h1>
+      <p>Gebaut mit HTML und CSS, kostenlos online dank GitHub Pages.</p>
+      <a class="knopf" href="#ueber">Mehr erfahren</a>
+    </div>
+  </header>
+
+  <!-- ===== Abschnitt mit drei Karten ===== -->
+  <section id="ueber">
+    <div class="container">
+      <h2>Was hier drinsteckt</h2>
+      <div class="karten">
+        <div class="karte">
+          <div class="icon">🧱</div>
+          <h3>HTML</h3>
+          <p>Der Inhalt und die Struktur der Seite: Überschriften, Texte, Links.</p>
+        </div>
+        <div class="karte">
+          <div class="icon">🎨</div>
+          <h3>CSS</h3>
+          <p>Das Aussehen: Farben, Abstände, Schriften. Steht oben im &lt;style&gt;-Block.</p>
+        </div>
+        <div class="karte">
+          <div class="icon">⚡</div>
+          <h3>JavaScript</h3>
+          <p>Macht Dinge interaktiv, wie den Zähler weiter unten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Interaktiver Abschnitt ===== -->
+  <section id="ausprobieren">
+    <div class="container">
+      <h2>Probier's aus</h2>
+      <div class="zaehler">
+        <div class="zahl" id="zahl">0</div>
+        <p style="color: var(--text-leise)">So oft wurde der Knopf gedrückt</p>
+        <button onclick="hochzaehlen()">Klick mich</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      Erstellt mit ❤️ und GitHub Pages · <span id="jahr"></span>
+    </div>
+  </footer>
+
+  <script>
+    // Zähler: erhöht die Zahl bei jedem Klick
+    let anzahl = 0;
+    function hochzaehlen() {
+      anzahl = anzahl + 1;
+      document.getElementById("zahl").textContent = anzahl;
+    }
+
+    // Aktuelles Jahr im Footer anzeigen
+    document.getElementById("jahr").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
